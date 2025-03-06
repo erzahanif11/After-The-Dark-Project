@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bd3841bb1c2fb4eb361d337b3d3c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2724509024277815993, guid: a4920af0bde33ec48be7af52bda92876, type: 3}
   chaseRange: 10
   roamingRange: 20
   speed: 3.5

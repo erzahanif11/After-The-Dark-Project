@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float chaseRange = 10f;
     public float roamingRange = 20f;
     public float speed = 3.5f;
@@ -21,6 +21,11 @@ public class EnemyAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         startPoint = transform.position;
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
         StartCoroutine(Roam());
     }
 
