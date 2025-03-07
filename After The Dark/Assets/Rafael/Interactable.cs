@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HoldInteractable : MonoBehaviour
 {
-    public ObjectiveTracker tracker;
+    public MainLOGIC tracker;
     public float holdDuration = 30f;  // Time required to complete interaction
     private float holdProgress = 0f;  // Tracks progress when holding the button
 
@@ -14,7 +14,12 @@ public class HoldInteractable : MonoBehaviour
 
     void Start()
     {
-        tracker = FindObjectOfType<ObjectiveTracker>();
+        tracker = FindObjectOfType<MainLOGIC>();
+        if (tracker == null)
+        {
+            Debug.LogError("MainLOGIC script not found in the scene!");
+        }
+
         if (progressBar != null)
         {
             progressBar.gameObject.SetActive(false); // Hide progress bar initially
@@ -33,7 +38,7 @@ public class HoldInteractable : MonoBehaviour
                 if (progressBar != null)
                     progressBar.value = holdProgress; // Update UI bar
 
-                Debug.Log("Holding progress: " + holdProgress.ToString("F2") + "s");
+              //  Debug.Log("Holding progress: " + holdProgress.ToString("F2") + "s");
 
                 if (holdProgress >= holdDuration)
                 {
@@ -74,13 +79,14 @@ public class HoldInteractable : MonoBehaviour
 
     void Interact()
     {
+        // logika tracker
+        tracker.CompleteObjective();
         Debug.Log("Interaction Complete!");
         holdProgress = 0f; // Reset progress after completion
         if (progressBar != null)
             progressBar.value = holdProgress; // Reset UI bar
         isComplete=true;
 
-        // logika tracker
-        tracker.CompleteObjective();
+      
     }
 }
