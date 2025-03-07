@@ -73,5 +73,8 @@ public class HoldInteractable : MonoBehaviour
         holdProgress = 0f; // Reset progress after completion
         if (progressBar != null)
             progressBar.value = holdProgress; // Reset UI bar
+
+
+        // logika selnju
     }
 }
