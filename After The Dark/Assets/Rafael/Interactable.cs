@@ -3,14 +3,18 @@ using UnityEngine.UI;
 
 public class HoldInteractable : MonoBehaviour
 {
+    public ObjectiveTracker tracker;
     public float holdDuration = 30f;  // Time required to complete interaction
     private float holdProgress = 0f;  // Tracks progress when holding the button
 
     public Slider progressBar; // UI slider reference
     private bool isPlayerInRange = false; // To check if player is inside the trigger
+    public Text InteractPrompt;
+    private bool isComplete=false;
 
     void Start()
     {
+        tracker = FindObjectOfType<ObjectiveTracker>();
         if (progressBar != null)
         {
             progressBar.gameObject.SetActive(false); // Hide progress bar initially
@@ -21,7 +25,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInRange) // Only run logic if the player is inside the trigger
+        if (isPlayerInRange && !isComplete) // Only run logic if the player is inside the trigger
         {
             if (Input.GetKey(KeyCode.E)) // Holding the key
             {
@@ -49,11 +53,12 @@ public class HoldInteractable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&& !isComplete)
         {
             isPlayerInRange = true;
             if (progressBar != null)
                 progressBar.gameObject.SetActive(true); // Show progress bar when in range
+           
         }
     }
 
@@ -73,8 +78,9 @@ public class HoldInteractable : MonoBehaviour
         holdProgress = 0f; // Reset progress after completion
         if (progressBar != null)
             progressBar.value = holdProgress; // Reset UI bar
+        isComplete=true;
 
-
-        // logika selnju
+        // logika tracker
+        tracker.CompleteObjective();
     }
 }
