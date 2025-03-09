@@ -59,9 +59,9 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    public void AddTime(float additionalTime)
+    public void AddTime()
     {
-          currentTime += additionalTime;   
+        currentTime += 0.25f;   
         Debug.Log("Waktu bertambah 15 menit");
     }
 

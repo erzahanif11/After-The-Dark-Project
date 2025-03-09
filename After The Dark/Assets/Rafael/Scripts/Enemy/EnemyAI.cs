@@ -16,8 +16,7 @@ public class EnemyAI : MonoBehaviour
     private float distanceToPlayer;
     private bool isChasing = false;
     private bool isRoaming = false;
-
-    private float additionalTime = 0.25f;
+    private bool hasTriggered = false;
 
     void Start()
     {
@@ -90,12 +89,13 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
-            TimeManager.Instance.AddTime(additionalTime);
+            hasTriggered = true; // Set flag menjadi true agar tidak bisa dipanggil lagi
+            TimeManager.Instance.AddTime();
             Destroy(gameObject);
         }
-        
+
     }
 
     void OnDrawGizmosSelected()
