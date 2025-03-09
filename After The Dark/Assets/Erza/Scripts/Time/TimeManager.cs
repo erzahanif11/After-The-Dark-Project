@@ -23,7 +23,12 @@ public class TimeManager : MonoBehaviour
     public Gradient skyboxTintColor; // Perubahan warna skybox
 
     private bool isGameOver = false;
+    public static TimeManager Instance;
 
+    public void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         // Pastikan Panel Game Over tidak tampil di awal
@@ -52,6 +57,12 @@ public class TimeManager : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    public void AddTime(float additionalTime)
+    {
+        currentTime += additionalTime;
+        Debug.Log("Waktu bertambah 15 detik");
     }
 
     // Mengupdate UI Jam
@@ -87,6 +98,7 @@ public class TimeManager : MonoBehaviour
     // Fungsi Game Over
     private void GameOver()
     {
+        Time.timeScale = 0f;
         Debug.Log("Game Over! Sudah tengah malam.");
         isGameOver = true;
 
@@ -105,6 +117,7 @@ public class TimeManager : MonoBehaviour
     // Fungsi untuk tombol Restart
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart Scene
     }
 }

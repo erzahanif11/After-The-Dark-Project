@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     private bool isChasing = false;
     private bool isRoaming = false;
 
+    private float additionalTime = 0.25f;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -84,6 +86,16 @@ public class EnemyAI : MonoBehaviour
         }
 
         return transform.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            TimeManager.Instance.AddTime(additionalTime);
+            Destroy(gameObject);
+        }
+        
     }
 
     void OnDrawGizmosSelected()

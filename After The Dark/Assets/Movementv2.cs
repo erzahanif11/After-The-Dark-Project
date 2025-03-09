@@ -21,6 +21,6 @@ public class MovementV2 : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player
-        rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
+        rb.linearVelocity = new Vector3(movement.x * moveSpeed, rb.linearVelocity.y, movement.z * moveSpeed);
     }
 }
