@@ -44,7 +44,7 @@ public class TimeManager : MonoBehaviour
 
         // Menghitung waktu berdasarkan durasi hari 0.01 * deltatime = 1 menit 
         float timeIncrement = (6f / (dayDurationInMinutes * 600f)) * Time.deltaTime;
-        //currentTime += timeIncrement;
+        currentTime += timeIncrement;
 
         // Update UI Jam
         UpdateTimeUI();
