@@ -42,9 +42,9 @@ public class TimeManager : MonoBehaviour
     {
         if (isGameOver) return;
 
-        // Menghitung waktu berdasarkan durasi hari
-        float timeIncrement = (6f / (dayDurationInMinutes * 60f)) * Time.deltaTime;
-        currentTime += timeIncrement;
+        // Menghitung waktu berdasarkan durasi hari 0.01 * deltatime = 1 menit 
+        float timeIncrement = (6f / (dayDurationInMinutes * 600f)) * Time.deltaTime;
+        //currentTime += timeIncrement;
 
         // Update UI Jam
         UpdateTimeUI();
@@ -61,8 +61,8 @@ public class TimeManager : MonoBehaviour
 
     public void AddTime(float additionalTime)
     {
-        currentTime += additionalTime;
-        Debug.Log("Waktu bertambah 15 detik");
+          currentTime += additionalTime;   
+        Debug.Log("Waktu bertambah 15 menit");
     }
 
     // Mengupdate UI Jam
