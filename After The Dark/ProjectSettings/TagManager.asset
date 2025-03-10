@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Objectives
   - Logic
+  - RoomLight
   layers:
   - Default
   - TransparentFX
