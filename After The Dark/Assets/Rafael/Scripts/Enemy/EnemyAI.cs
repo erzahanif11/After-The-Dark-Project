@@ -18,6 +18,11 @@ public class EnemyAI : MonoBehaviour
     private bool isRoaming = false;
     private bool hasTriggered = false;
 
+    // ========== Added Variables for Freezing ==========
+    private bool isFrozen = false; // Status whether the enemy is frozen
+    private float originalSpeed; // Stores the original speed before freezing
+    // ===================================================
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -28,10 +33,15 @@ public class EnemyAI : MonoBehaviour
             player = playerObj.transform;
         }
         StartCoroutine(Roam());
+
+        // Save original speed
+        originalSpeed = speed;
     }
 
     void Update()
     {
+        if (isFrozen) return; // Stop all movement when frozen
+
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= chaseRange)
@@ -91,11 +101,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasTriggered)
         {
-            hasTriggered = true; // Set flag menjadi true agar tidak bisa dipanggil lagi
+            hasTriggered = true;
             TimeManager.Instance.AddTime();
             Destroy(gameObject);
         }
-
     }
 
     void OnDrawGizmosSelected()
@@ -105,4 +114,26 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(startPoint, roamingRange);
     }
+
+    // ========== Added Methods for Freezing ==========
+
+    public void Freeze()
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            agent.isStopped = true; // Stop the NavMeshAgent
+            StartCoroutine(Unfreeze());
+        }
+    }
+
+    private IEnumerator Unfreeze()
+    {
+        yield return new WaitForSeconds(2f); // Freeze for 2 seconds
+        isFrozen = false;
+        agent.isStopped = false; // Resume movement
+        agent.speed = originalSpeed;
+    }
+
+    // ===============================================
 }
