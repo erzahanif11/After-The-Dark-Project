@@ -39,9 +39,9 @@ public class LightController : MonoBehaviour
         }
     }
 
-    private IEnumerator TurnOnLightsAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ToggleLights(true);
-    }
+    //private IEnumerator TurnOnLightsAfterDelay(float delay)
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    ToggleLights(true);
+    //}
 }
