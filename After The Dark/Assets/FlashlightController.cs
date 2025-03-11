@@ -2,35 +2,27 @@ using UnityEngine;
 
 public class FlashlightController : MonoBehaviour
 {
-    public Light flashlight; // The light component
-    public Transform player; // Reference to the Player
-    public LayerMask enemyLayer; // Layer for enemies
-    public float flashlightRange = 5f; // Flashlight reach distance
-
-    private bool facingRight = true;
-
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        // Determine player direction
-        facingRight = player.localScale.x > 0; // Facing right if scale.x > 0
-
-        // Adjust flashlight position and rotation
-        transform.position = player.position + (facingRight ? Vector3.right : Vector3.left) * 0.5f;
-        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
-
-        // Detect enemies using Raycast
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, flashlightRange, enemyLayer);
-
-        foreach (var hit in hits)
+        if (other.CompareTag("Enemy")) // Ensure your enemies have the "Enemy" tag
         {
-            EnemyAI enemy = hit.collider.GetComponent<EnemyAI>();
+            EnemyAI enemy = other.GetComponent<EnemyAI>();
             if (enemy != null)
             {
-                enemy.Freeze();
+                enemy.Freeze(); // Call a freeze function in EnemyAI to stop them
             }
         }
+    }
 
-        // Debugging: Draw flashlight beam in Scene view
-        Debug.DrawRay(transform.position, transform.forward * flashlightRange, Color.yellow);
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyAI enemy = other.GetComponent<EnemyAI>();
+            if (enemy != null)
+            {
+                enemy.Unfreeze(); // Restore enemy movement when out of light
+            }
+        }
     }
 }
