@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
-    public float dayDurationInMinutes = 1f; // Durasi hari dalam menit nyata
     private float currentTime = 18f; // 18.00 berarti sore hari (jam 6 sore)
     private float endTime = 24f; // 24.00 berarti tengah malam
 
@@ -43,7 +42,7 @@ public class TimeManager : MonoBehaviour
         if (isGameOver) return;
 
         // Menghitung waktu berdasarkan durasi hari 0.01 * deltatime = 1 menit 
-        float timeIncrement = (6f / (dayDurationInMinutes * 600f)) * Time.deltaTime;
+        float timeIncrement =  Time.deltaTime/60f;
         currentTime += timeIncrement;
 
         // Update UI Jam
