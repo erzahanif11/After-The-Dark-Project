@@ -14,7 +14,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Start()
     {
-        tracker = FindObjectOfType<MainLOGIC>();
+        tracker = FindFirstObjectByType<MainLOGIC>();
         if (tracker == null)
         {
             Debug.LogError("MainLOGIC script not found in the scene!");

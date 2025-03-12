@@ -9,11 +9,12 @@ TagManager:
   - RoomLight
   - Undefined
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Enemy
