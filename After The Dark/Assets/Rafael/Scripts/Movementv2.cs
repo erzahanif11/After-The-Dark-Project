@@ -16,6 +16,10 @@ public class MovementV2 : MonoBehaviour
         // Get input
         movement.x = Input.GetAxisRaw("Horizontal"); // Left / Right
         movement.z = Input.GetAxisRaw("Vertical");   // Forward (North) / Backward (South)
+        if (movement.magnitude > 1)
+        {
+            movement = movement.normalized;
+        }
     }
 
     void FixedUpdate()
