@@ -27,7 +27,7 @@ public class LightController : MonoBehaviour
         {
             ToggleLights(false);
             EnemySpawn spawner = enemySpawner.GetComponent<EnemySpawn>();
-            spawner.EnemyDrop();
+            StartCoroutine(spawner.EnemyDrop());
             timer = lightOnDuration;
         }
     }

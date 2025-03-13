@@ -10,11 +10,12 @@ public class EnemySpawn : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(EnemyDrop());
+        EnemyDrop();
     }
 
     public IEnumerator EnemyDrop()
     {
+        enemyCount = 0;
         while (enemyCount < 20)
         {
             xPos = Random.Range(-185, -70);
@@ -27,9 +28,9 @@ public class EnemySpawn : MonoBehaviour
         Debug.Log("Enemy spawned");
     }
 
-    public void ResetEnemyCount()
-    {
-        enemyCount = 0;
-    }
+    //public void ResetEnemyCount()
+    //{
+    //    enemyCount = 0;
+    //}
 
 }
