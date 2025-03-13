@@ -13,7 +13,8 @@ public class MainLOGIC : MonoBehaviour
     public MainLOGIC mainlogic;
     public GameObject GameCompleteScreen;
     public GameObject clock;
-
+    public GameObject LightController;
+    public GameObject EnemySpawner;
 
 
     public void CompleteObjective()
@@ -27,15 +28,16 @@ public class MainLOGIC : MonoBehaviour
         }
         if (completedObjectives == NightTreshold)
         {
-          NightIsComing();  
+            NightIsComing();  
         }
     }
 
-
-
     public void NightIsComing() {
         clock.SetActive(true);
+        LightController.SetActive(true);
+        EnemySpawner.SetActive(true);
 
+        LightController.GetComponent<LightController>().ForceTurnOffLights();
     }
     public void Playagain()
     {

@@ -13,17 +13,23 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(EnemyDrop());
     }
 
-    IEnumerator EnemyDrop()
+    public IEnumerator EnemyDrop()
     {
         while (enemyCount < 20)
         {
             xPos = Random.Range(-185, -70);
             zPos = Random.Range(-45, 20);
-            Instantiate(Enemy,new Vector3(xPos,1.5f,zPos), Quaternion.identity);
+            Instantiate(Enemy, new Vector3(xPos, 1.5f, zPos), Quaternion.identity);
 
             yield return new WaitForSeconds(0f);
             enemyCount++;
         }
+        Debug.Log("Enemy spawned");
+    }
+
+    public void ResetEnemyCount()
+    {
+        enemyCount = 0;
     }
 
 }

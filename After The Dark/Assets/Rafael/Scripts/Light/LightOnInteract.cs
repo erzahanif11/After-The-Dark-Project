@@ -13,11 +13,11 @@ public class LightOnInteract : MonoBehaviour
 
     void Start()
     {
-        lightController = FindFirstObjectByType<LightController>();
-        if (lightController == null)
-        {
-            Debug.LogError("LightController script not found in the scene!");
-        }
+        //lightController = FindFirstObjectByType<LightController>();
+        //if (lightController == null)
+        //{
+        //    Debug.LogError("LightController script not found in the scene!");
+        //}
 
         if (progressBar != null)
         {
