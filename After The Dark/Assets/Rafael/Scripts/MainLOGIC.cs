@@ -27,10 +27,16 @@ public class MainLOGIC : MonoBehaviour
         }
         if (completedObjectives == NightTreshold)
         {
-            clock.SetActive(true);
+          NightIsComing();  
         }
     }
 
+
+
+    public void NightIsComing() {
+        clock.SetActive(true);
+
+    }
     public void Playagain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

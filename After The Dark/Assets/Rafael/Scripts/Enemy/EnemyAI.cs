@@ -123,6 +123,7 @@ public class EnemyAI : MonoBehaviour
         {
             isFrozen = true;
             agent.isStopped = true; // Stop the NavMeshAgent
+            agent.velocity = Vector3.zero;
         }
     }
 

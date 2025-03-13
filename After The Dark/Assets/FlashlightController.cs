@@ -11,6 +11,7 @@ public class FlashlightController : MonoBehaviour
     private void Start()
     {
         targetRotation= Quaternion.Euler(transform.eulerAngles); ;
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1f);
     }
     void Update()
     {
