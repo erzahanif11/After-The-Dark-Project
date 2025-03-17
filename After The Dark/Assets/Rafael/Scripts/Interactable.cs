@@ -11,9 +11,11 @@ public class HoldInteractable : MonoBehaviour
     private bool isPlayerInRange = false; // To check if player is inside the trigger
     public Text InteractPrompt;
     private bool isComplete=false;
+    private ChangeMaterialWithMeshRenderer changeMaterial;
 
     void Start()
     {
+        changeMaterial = GetComponent<ChangeMaterialWithMeshRenderer>();
         tracker = FindFirstObjectByType<MainLOGIC>();
         if (tracker == null)
         {
@@ -80,12 +82,13 @@ public class HoldInteractable : MonoBehaviour
     void Interact()
     {
         // logika tracker
+        changeMaterial.cleaned();
         tracker.CompleteObjective();
         Debug.Log("Interaction Complete!");
         holdProgress = 0f; // Reset progress after completion
         if (progressBar != null)
-            progressBar.value = holdProgress; // Reset UI bar
-        isComplete=true;
+            progressBar.gameObject.SetActive(false);
+        isComplete =true;
 
       
     }
