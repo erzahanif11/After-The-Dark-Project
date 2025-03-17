@@ -45,7 +45,9 @@ public class HoldInteractable : MonoBehaviour
 
                 if (holdProgress >= holdDuration)
                 {
+                    isComplete = true;
                     Interact();
+                    
                 }
             }
         }
@@ -82,16 +84,23 @@ public class HoldInteractable : MonoBehaviour
 
     void Interact()
     {
+       
         // logika tracker
-        if (changeMaterial != null) { 
-        changeMaterial.cleaned(); }
-        tracker.CompleteObjective();
-        Debug.Log("Interaction Complete!");
-        holdProgress = 0f; // Reset progress after completion
         if (progressBar != null)
             progressBar.gameObject.SetActive(false);
-        isComplete =true;
 
-      
+
+        holdProgress = 0f; // Reset progress after completion
+        tracker.CompleteObjective();
+        
+       
+
+        if (changeMaterial != null)
+        {
+            changeMaterial.cleaned();
+        }
+
+        Debug.Log("Interaction Complete!");
+
     }
 }
