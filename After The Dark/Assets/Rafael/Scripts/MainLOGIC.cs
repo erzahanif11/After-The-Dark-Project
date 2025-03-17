@@ -15,7 +15,17 @@ public class MainLOGIC : MonoBehaviour
     public GameObject clock;
     public GameObject LightController;
     public GameObject EnemySpawner;
+    public GameObject flashlight;
 
+
+
+    public void Start()
+    {
+        if (flashlight != null)
+        {
+            flashlight.SetActive(false);
+        }
+    }
 
     public void CompleteObjective()
     {
@@ -36,6 +46,10 @@ public class MainLOGIC : MonoBehaviour
         clock.SetActive(true);
         LightController.SetActive(true);
         EnemySpawner.SetActive(true);
+        if (flashlight != null)
+        {
+            flashlight.SetActive(true);
+        }
 
         LightController.GetComponent<LightController>().ForceTurnOffLights();
     }

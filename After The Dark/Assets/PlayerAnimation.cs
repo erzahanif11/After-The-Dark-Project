@@ -9,12 +9,22 @@ public class PlayerAnimation : MonoBehaviour
     private int currentFrame;
     private float timer;
     private Transform playerTransform;
+    private Material playerMaterial;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         playerTransform = transform;
+        playerMaterial = rend.material;
         currentFrame = 0;
+
+        // Ensure Alpha Clipping is enabled in the material
+        playerMaterial.SetFloat("_Cutoff", 0.5f);  // Adjust threshold if needed
+        playerMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        playerMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        playerMaterial.SetInt("_ZWrite", 1);
+        playerMaterial.EnableKeyword("_ALPHATEST_ON");
+        playerMaterial.renderQueue = 2450; // Ensure correct rendering order
     }
 
     void Update()
@@ -39,12 +49,18 @@ public class PlayerAnimation : MonoBehaviour
             {
                 timer = 0f;
                 currentFrame = (currentFrame + 1) % walkFrames.Length;
-                rend.material.SetTexture("_BaseMap", walkFrames[currentFrame]);
+                UpdateTexture(walkFrames[currentFrame]);
             }
         }
         else
         {
-            rend.material.SetTexture("_BaseMap", walkFrames[0]); // Stop at first frame
+            UpdateTexture(walkFrames[0]); // Stop at first frame
         }
+    }
+
+    void UpdateTexture(Texture newTexture)
+    {
+        playerMaterial.SetTexture("_BaseMap", newTexture);
+        playerMaterial.EnableKeyword("_ALPHATEST_ON");
     }
 }
