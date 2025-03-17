@@ -15,6 +15,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Start()
     {
+        
         changeMaterial = GetComponent<ChangeMaterialWithMeshRenderer>();
         tracker = FindFirstObjectByType<MainLOGIC>();
         if (tracker == null)
@@ -82,7 +83,8 @@ public class HoldInteractable : MonoBehaviour
     void Interact()
     {
         // logika tracker
-        changeMaterial.cleaned();
+        if (changeMaterial != null) { 
+        changeMaterial.cleaned(); }
         tracker.CompleteObjective();
         Debug.Log("Interaction Complete!");
         holdProgress = 0f; // Reset progress after completion
