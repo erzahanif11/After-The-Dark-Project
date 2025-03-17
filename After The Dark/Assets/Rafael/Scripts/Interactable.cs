@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HoldInteractable : MonoBehaviour
 {
     public MainLOGIC tracker;
-    public float holdDuration = 30f;  // Time required to complete interaction
+    public float holdDuration = 5f;  // Time required to complete interaction
     private float holdProgress = 0f;  // Tracks progress when holding the button
 
     public Slider progressBar; // UI slider reference
