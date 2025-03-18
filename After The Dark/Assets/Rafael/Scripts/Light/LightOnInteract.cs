@@ -11,6 +11,7 @@ public class LightOnInteract : MonoBehaviour
     private bool isPlayerInRange = false; // To check if player is inside the trigger
     public Text InteractPrompt;
     public MainLOGIC Mainlogic;
+    public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class LightOnInteract : MonoBehaviour
     {
         if (isPlayerInRange && !Mainlogic.islightsOn) // Only run logic if the player is inside the trigger
         {
-            if (Input.GetKey(KeyCode.E)) // Holding the key
+            if (Input.GetKey(KeyCode.P)) // Holding the key
             {
                 holdProgress += Time.deltaTime; // Increment progress
                 if (progressBar != null)
@@ -90,6 +91,7 @@ public class LightOnInteract : MonoBehaviour
         holdProgress = 0f;
         if (progressBar != null)
             progressBar.value = holdProgress; // Reset UI bar
+        ChangeMaterialWithMeshRenderer.cleaned();
 
     }
 }
