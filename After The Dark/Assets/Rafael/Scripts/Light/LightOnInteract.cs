@@ -83,6 +83,7 @@ public class LightOnInteract : MonoBehaviour
 
         if (lightController != null)
         {
+            Mainlogic.islightsOn = true;
             lightController.ResetLightTimer();
         }
 
