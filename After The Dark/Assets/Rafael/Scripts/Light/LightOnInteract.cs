@@ -4,12 +4,13 @@ using UnityEngine.UI;
 public class LightOnInteract : MonoBehaviour
 {
     public LightController lightController;
-    public float holdDuration = 30f;  // Time required to complete interaction
+    public float holdDuration = 5f;  // Time required to complete interaction
     private float holdProgress = 0f;  // Tracks progress when holding the button
 
     public Slider progressBar; // UI slider reference
     private bool isPlayerInRange = false; // To check if player is inside the trigger
     public Text InteractPrompt;
+    public MainLOGIC Mainlogic;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class LightOnInteract : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInRange) // Only run logic if the player is inside the trigger
+        if (isPlayerInRange && !Mainlogic.islightsOn) // Only run logic if the player is inside the trigger
         {
             if (Input.GetKey(KeyCode.E)) // Holding the key
             {
@@ -57,7 +58,7 @@ public class LightOnInteract : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !Mainlogic.islightsOn)
         {
             isPlayerInRange = true;
             if (progressBar != null)

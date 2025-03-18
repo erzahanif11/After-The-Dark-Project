@@ -12,6 +12,9 @@ public class HoldInteractable : MonoBehaviour
     public Text InteractPrompt;
     private bool isComplete=false;
     private ChangeMaterialWithMeshRenderer changeMaterial;
+    public LightController lightControllercs;
+    public GameObject lightController;
+   
 
     void Start()
     {
@@ -33,7 +36,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInRange && !isComplete) // Only run logic if the player is inside the trigger
+        if (isPlayerInRange && !isComplete && tracker.islightsOn ) // Only run logic if the player is inside the trigger
         {
             if (Input.GetKey(KeyCode.P)) // Holding the key
             {
@@ -63,7 +66,7 @@ public class HoldInteractable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")&& !isComplete)
+        if (other.CompareTag("Player")&& !isComplete & tracker.islightsOn)
         {
             isPlayerInRange = true;
             if (progressBar != null)

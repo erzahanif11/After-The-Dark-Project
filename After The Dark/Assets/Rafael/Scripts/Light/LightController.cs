@@ -9,7 +9,8 @@ public class LightController : MonoBehaviour
     private float timer;
     private Light[] roomLights;
     public GameObject enemySpawner;
-
+    public bool isOff = true;
+    public MainLOGIC mainlogic;
     private void Start()
     {
         roomLights = GameObject.FindGameObjectsWithTag("RoomLight")
@@ -26,9 +27,11 @@ public class LightController : MonoBehaviour
         if (timer <= 0)
         {
             ToggleLights(false);
+            isOff= true;
             EnemySpawn spawner = enemySpawner.GetComponent<EnemySpawn>();
             StartCoroutine(spawner.EnemyDrop());
             timer = lightOnDuration;
+            mainlogic.islightsOn = false;
         }
     }
 
@@ -64,6 +67,8 @@ public class LightController : MonoBehaviour
         ToggleLights(true);
         timer = lightOnDuration;
         StartCoroutine(DestroyAllEnemies());
+        mainlogic.islightsOn = true;
+
         //if (enemySpawner != null)
         //    enemySpawner.SetActive(false);
     }
@@ -72,6 +77,8 @@ public class LightController : MonoBehaviour
     {
         ToggleLights(false); // Matikan lampu tanpa menghancurkan musuh
         timer = 0;
+        isOff = true;
+        mainlogic.islightsOn = false;
 
         //if (enemySpawner != null)
         //{

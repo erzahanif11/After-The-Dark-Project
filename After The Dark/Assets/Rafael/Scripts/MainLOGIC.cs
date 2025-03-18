@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using TMPro;  
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,17 +16,20 @@ public class MainLOGIC : MonoBehaviour
     public GameObject clock;
     public GameObject LightController;
     public GameObject EnemySpawner;
+    public LightController lightController;
     public GameObject flashlight;
+    public bool islightsOn = true;
+    
 
 
 
-    public void Start()
-    {
-        if (flashlight != null)
-        {
-            flashlight.SetActive(false);
-        }
-    }
+    //public void Start()
+    //{
+    //    if (flashlight != null)
+    //    {
+    //        flashlight.SetActive(false);
+    //    }
+    //}
 
     public void CompleteObjective()
     {
@@ -46,10 +50,10 @@ public class MainLOGIC : MonoBehaviour
         clock.SetActive(true);
         LightController.SetActive(true);
         EnemySpawner.SetActive(true);
-        if (flashlight != null)
-        {
             flashlight.SetActive(true);
-        }
+        islightsOn=false;
+        Debug.Log("flash nyala");
+        
 
         LightController.GetComponent<LightController>().ForceTurnOffLights();
     }
