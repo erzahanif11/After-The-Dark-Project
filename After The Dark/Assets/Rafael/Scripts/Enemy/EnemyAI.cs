@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     private bool hasTriggered = false;
 
     // ========== Added Variables for Freezing ==========
-    private bool isFrozen = false; // Status whether the enemy is frozen
+    public bool isFrozen = false; // Status whether the enemy is frozen
     private float originalSpeed; // Stores the original speed before freezing
     // ===================================================
 
