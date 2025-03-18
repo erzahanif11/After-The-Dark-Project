@@ -87,7 +87,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Interact()
     {
-       
+        changeMaterial.cleaned();
         // logika tracker
         if (progressBar != null)
             progressBar.gameObject.SetActive(false);
@@ -98,10 +98,10 @@ public class HoldInteractable : MonoBehaviour
         
        
 
-        if (changeMaterial != null)
-        {
-            changeMaterial.cleaned();
-        }
+        
+        
+            
+        
 
         Debug.Log("Interaction Complete!");
 
