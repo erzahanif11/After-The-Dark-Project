@@ -37,6 +37,7 @@ public class LightController : MonoBehaviour
 
     private void ToggleLights(bool state)
     {
+        mainlogic.islightsOn = false;
         foreach (Light light in roomLights)
         {
             if (light != null)
@@ -49,6 +50,7 @@ public class LightController : MonoBehaviour
 
     private IEnumerator DestroyAllEnemies()
     {
+        mainlogic.islightsOn = false;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)
