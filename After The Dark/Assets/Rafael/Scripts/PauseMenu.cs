@@ -5,7 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool Paused = false;
     public GameObject PauseMenuCanvas;
-
+    public GameObject panel;
     void Start()
     {
         Time.timeScale = 1f;
@@ -49,5 +49,9 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
+    public void GuideButton()
+    {
+        panel.SetActive(true);
+    }
     
 }
