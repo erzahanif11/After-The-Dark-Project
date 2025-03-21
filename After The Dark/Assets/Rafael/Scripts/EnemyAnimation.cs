@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyAnimation : MonoBehaviour
 {
-    public Texture[] walkFrames; // Array of textures for animation
-    public float frameRate = 0.1f; // Speed of animation
+    public Texture[] walkFrames; 
+    public float frameRate = 0.1f; 
 
     private Renderer rend;
     private int currentFrame;
@@ -23,7 +23,6 @@ public class EnemyAnimation : MonoBehaviour
         enemyAI = GetComponent<EnemyAI>();
         currentFrame = 0;
 
-        // Ensure Alpha Clipping is enabled in the material
         enemyMaterial.SetFloat("_Cutoff", 0.5f);
         enemyMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
         enemyMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
@@ -36,14 +35,13 @@ public class EnemyAnimation : MonoBehaviour
     {
         if (enemyAI != null && enemyAI.isFrozen)
         {
-            UpdateTexture(walkFrames[0]); // Stop at first frame when frozen
+            UpdateTexture(walkFrames[0]); 
             return;
         }
 
         Vector3 velocity = agent.velocity;
         bool isMoving = velocity.sqrMagnitude > 0.0001f;
 
-        // Calculate the direction away from z=0
         Vector3 directionAwayFromZ = enemyTransform.position - new Vector3(enemyTransform.position.x, enemyTransform.position.y, 0);
         if (directionAwayFromZ != Vector3.zero)
         {
@@ -53,11 +51,11 @@ public class EnemyAnimation : MonoBehaviour
 
         if (velocity.x < 0)
         {
-            enemyTransform.localScale = new Vector3(-1.64f, 1.64f, 1.64e-06f); // Flip left
+            enemyTransform.localScale = new Vector3(-1.64f, 1.64f, 1.64e-06f); 
         }
         else if (velocity.x > 0)
         {
-            enemyTransform.localScale = new Vector3(1.64f, 1.64f, 1.64e-06f); // Face right
+            enemyTransform.localScale = new Vector3(1.64f, 1.64f, 1.64e-06f);
         }
 
         if (isMoving)
@@ -72,7 +70,7 @@ public class EnemyAnimation : MonoBehaviour
         }
         else
         {
-            UpdateTexture(walkFrames[0]); // Stop at first frame
+            UpdateTexture(walkFrames[0]); 
         }
     }
 

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    public Texture[] walkFrames; // Array of textures for animation
-    public float frameRate = 0.1f; // Speed of animation
+    public Texture[] walkFrames; 
+    public float frameRate = 0.1f; 
 
     private Renderer rend;
     private int currentFrame;
@@ -18,31 +18,29 @@ public class PlayerAnimation : MonoBehaviour
         playerMaterial = rend.material;
         currentFrame = 0;
 
-        // Ensure Alpha Clipping is enabled in the material
-        playerMaterial.SetFloat("_Cutoff", 0.5f);  // Adjust threshold if needed
+        playerMaterial.SetFloat("_Cutoff", 0.5f);  
         playerMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
         playerMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
         playerMaterial.SetInt("_ZWrite", 1);
         playerMaterial.EnableKeyword("_ALPHATEST_ON");
-        playerMaterial.renderQueue = 2450; // Ensure correct rendering order
+        playerMaterial.renderQueue = 2450; 
     }
 
     void Update()
     {
-        // Check if any WASD key is pressed
         bool isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
                         Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
                         Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ||
-                        Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);    
+                        Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
 
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            playerTransform.localScale = new Vector3(-1.64f, 1.64f, 1.64e-06f); // Flip left
+            playerTransform.localScale = new Vector3(-1.64f, 1.64f, 1.64e-06f);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            playerTransform.localScale = new Vector3(1.64f, 1.64f, 1.64e-06f); // Face right (default)
+            playerTransform.localScale = new Vector3(1.64f, 1.64f, 1.64e-06f); 
         }
 
         if (isMoving)
@@ -57,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
         }
         else
         {
-            UpdateTexture(walkFrames[0]); // Stop at first frame
+            UpdateTexture(walkFrames[0]); 
         }
     }
 

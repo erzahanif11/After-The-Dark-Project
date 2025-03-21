@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class SkyboxTintChanger : MonoBehaviour
 {
-    public Material skyboxMaterial;      // Material Skybox
-    public Gradient skyTintGradient;     // Gradient untuk perubahan warna langit
+    public Material skyboxMaterial;     
+    public Gradient skyTintGradient;    
 
     [Range(18f, 24f)]
-    public float currentTime = 18f;      // Waktu dalam jam (18:00 - 24:00)
+    public float currentTime = 18f;     
 
     private void Update()
     {
@@ -19,7 +19,6 @@ public class SkyboxTintChanger : MonoBehaviour
 
         if (skyboxMaterial != null)
         {
-            // Mengubah warna Sky Tint berdasarkan waktu
             Color targetColor = skyTintGradient.Evaluate(timeNormalized);
             skyboxMaterial.SetColor("_SkyTint", targetColor);
 

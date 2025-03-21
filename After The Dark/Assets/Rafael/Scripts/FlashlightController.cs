@@ -17,34 +17,33 @@ public class FlashlightController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            targetRotation = Quaternion.Euler(0, 270, 0); // Face left
+            targetRotation = Quaternion.Euler(0, 270, 0); 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            targetRotation = Quaternion.Euler(0, 90, 0); // Face right
+            targetRotation = Quaternion.Euler(0, 90, 0); 
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            targetRotation = Quaternion.Euler(0, 0, 0); // Face up
+            targetRotation = Quaternion.Euler(0, 0, 0); 
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            targetRotation = Quaternion.Euler(0, 180, 0); // Face down
+            targetRotation = Quaternion.Euler(0, 180, 0); 
         }
 
-        // Instantly rotate to the target direction
         transform.rotation = targetRotation;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) // Ensure your enemies have the "Enemy" tag
+        if (other.CompareTag("Enemy")) 
         {
             EnemyAI enemy = other.GetComponent<EnemyAI>();
             if (enemy != null)
             {
-                enemy.Freeze(); // Call a freeze function in EnemyAI to stop them
+                enemy.Freeze(); 
             }
         }
     }
@@ -56,7 +55,7 @@ public class FlashlightController : MonoBehaviour
             EnemyAI enemy = other.GetComponent<EnemyAI>();
             if (enemy != null)
             {
-                enemy.Unfreeze(); // Restore enemy movement when out of light
+                enemy.Unfreeze(); 
             }
         }
     }

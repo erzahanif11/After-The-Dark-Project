@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainLOGIC : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public TextMeshProUGUI objectivesText;  // Assign this in Inspector
+    public TextMeshProUGUI objectivesText; 
     private int completedObjectives = 0;
     public int TargetObjectives = 6;
     public int NightTreshold = 3;
@@ -20,17 +20,6 @@ public class MainLOGIC : MonoBehaviour
     public GameObject flashlight;
     public bool islightsOn = true;
     
-
-
-
-    //public void Start()
-    //{
-    //    if (flashlight != null)
-    //    {
-    //        flashlight.SetActive(false);
-    //    }
-    //}
-
     public void CompleteObjective()
     {
         completedObjectives++;

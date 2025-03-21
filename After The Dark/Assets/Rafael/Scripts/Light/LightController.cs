@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public float lightOnDuration = 120f; // 2 menit
+    public float lightOnDuration = 120f;
     private float timer;
     private Light[] roomLights;
     public GameObject enemySpawner;
@@ -55,10 +55,10 @@ public class LightController : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            if (enemy != null) // Cek apakah masih ada sebelum dihancurkan
+            if (enemy != null)
             {
                 Destroy(enemy);
-                yield return new WaitForSeconds(0.01f); // Beri waktu untuk Unity memproses penghancuran
+                yield return new WaitForSeconds(0.01f);
             }
         }
         Debug.Log("Enemy destroyed");
@@ -71,21 +71,14 @@ public class LightController : MonoBehaviour
         StartCoroutine(DestroyAllEnemies());
         mainlogic.islightsOn = true;
 
-        //if (enemySpawner != null)
-        //    enemySpawner.SetActive(false);
     }
 
     public void ForceTurnOffLights()
     {
-        ToggleLights(false); // Matikan lampu tanpa menghancurkan musuh
+        ToggleLights(false); 
         timer = 0;
         isOff = true;
         mainlogic.islightsOn = false;
-
-        //if (enemySpawner != null)
-        //{
-        //    enemySpawner.SetActive(true); // Aktifkan spawner saat lampu mati
-        //}
     }
 }
 

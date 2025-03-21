@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class HoldInteractable : MonoBehaviour
 {
     public MainLOGIC tracker;
-    public float holdDuration = 5f;  // Time required to complete interaction
-    private float holdProgress = 0f;  // Tracks progress when holding the button
+    public float holdDuration = 5f;  
+    private float holdProgress = 0f;  
 
-    public Slider progressBar; // UI slider reference
-    private bool isPlayerInRange = false; // To check if player is inside the trigger
+    public Slider progressBar; 
+    private bool isPlayerInRange = false; 
     public Text InteractPrompt;
     private bool isComplete=false;
     private ChangeMaterialWithMeshRenderer changeMaterial;
@@ -30,23 +30,21 @@ public class HoldInteractable : MonoBehaviour
 
         if (progressBar != null)
         {
-            progressBar.gameObject.SetActive(false); // Hide progress bar initially
-            progressBar.maxValue = holdDuration; // Set max value
-            progressBar.value = holdProgress; // Set starting value
+            progressBar.gameObject.SetActive(false); 
+            progressBar.maxValue = holdDuration; 
+            progressBar.value = holdProgress; 
         }
     }
 
     void Update()
     {
-        if (isPlayerInRange && !isComplete && tracker.islightsOn ) // Only run logic if the player is inside the trigger
+        if (isPlayerInRange && !isComplete && tracker.islightsOn ) 
         {
-            if (Input.GetKey(KeyCode.E)) // Holding the key
+            if (Input.GetKey(KeyCode.E)) 
             {
-                holdProgress += Time.deltaTime; // Increment progress
+                holdProgress += Time.deltaTime; 
                 if (progressBar != null)
-                    progressBar.value = holdProgress; // Update UI bar
-
-              //  Debug.Log("Holding progress: " + holdProgress.ToString("F2") + "s");
+                    progressBar.value = holdProgress; 
 
                 if (holdProgress >= holdDuration)
                 {
@@ -57,7 +55,6 @@ public class HoldInteractable : MonoBehaviour
             }
         }
 
-        // Ensure the progress bar always faces the player
         if (progressBar != null)
         {
             Camera mainCam = Camera.main;
@@ -72,7 +69,7 @@ public class HoldInteractable : MonoBehaviour
         {
             isPlayerInRange = true;
             if (progressBar != null)
-                progressBar.gameObject.SetActive(true); // Show progress bar when in range
+                progressBar.gameObject.SetActive(true); 
            
         }
     }
@@ -83,7 +80,7 @@ public class HoldInteractable : MonoBehaviour
         {
             isPlayerInRange = false;
             if (progressBar != null)
-                progressBar.gameObject.SetActive(false); // Hide bar when leaving
+                progressBar.gameObject.SetActive(false); 
         }
     }
 
@@ -91,20 +88,12 @@ public class HoldInteractable : MonoBehaviour
     {
         audioSource.Play();
         changeMaterial.cleaned();
-        // logika tracker
         if (progressBar != null)
             progressBar.gameObject.SetActive(false);
 
 
-        holdProgress = 0f; // Reset progress after completion
+        holdProgress = 0f; 
         tracker.CompleteObjective();
-        
-       
-
-        
-        
-            
-        
 
         Debug.Log("Interaction Complete!");
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovementV2 : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed of the player
+    public float moveSpeed = 5f;
     private Rigidbody rb;
     private Vector3 movement;
 
@@ -13,9 +13,8 @@ public class MovementV2 : MonoBehaviour
 
     void Update()
     {
-        // Get input
-        movement.x = Input.GetAxisRaw("Horizontal"); // Left / Right
-        movement.z = Input.GetAxisRaw("Vertical");   // Forward (North) / Backward (South)
+        movement.x = Input.GetAxisRaw("Horizontal"); 
+        movement.z = Input.GetAxisRaw("Vertical");  
         if (movement.magnitude > 1)
         {
             movement = movement.normalized;
@@ -24,7 +23,6 @@ public class MovementV2 : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Move the player
         rb.linearVelocity = new Vector3(movement.x * moveSpeed, rb.linearVelocity.y, movement.z * moveSpeed);
     }
 }

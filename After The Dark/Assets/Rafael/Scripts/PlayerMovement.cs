@@ -17,13 +17,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = Vector3.zero;
 
         if (Input.GetKey(KeyCode.A))
-            move.x -= moveSpeed * Time.deltaTime; // Move left
+            move.x -= moveSpeed * Time.deltaTime; 
         if (Input.GetKey(KeyCode.D))
-            move.x += moveSpeed * Time.deltaTime; // Move right
+            move.x += moveSpeed * Time.deltaTime; 
         if (Input.GetKey(KeyCode.W))
-            move.z += moveSpeed * Time.deltaTime; // Move forward
+            move.z += moveSpeed * Time.deltaTime; 
         if (Input.GetKey(KeyCode.S))
-            move.z -= moveSpeed * Time.deltaTime; // Move backward
+            move.z -= moveSpeed * Time.deltaTime; 
 
         transform.position += move;
 
