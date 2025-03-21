@@ -28,7 +28,7 @@ public class LightOnInteract : MonoBehaviour
     {
         if (isPlayerInRange && !Mainlogic.islightsOn) 
         {
-            if (Input.GetKey(KeyCode.P))
+            if (Input.GetKey(KeyCode.E))
             {
                 holdProgress += Time.deltaTime; 
                 if (progressBar != null)
