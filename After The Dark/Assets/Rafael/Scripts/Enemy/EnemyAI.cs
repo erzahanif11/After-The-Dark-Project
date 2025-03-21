@@ -105,11 +105,23 @@ public class EnemyAI : MonoBehaviour
         {
             hasTriggered = true;
             TimeManager.Instance.AddTime();
-            if (audioSource != null)
+            if (audioSource != null && audioSource.clip != null)
             {
-                audioSource.PlayOneShot(audioSource.clip); // Play the attached audio clip
+                audioSource.transform.parent = null; // Detach the AudioSource from the enemy
+                audioSource.Play(); // Play the attached audio clip
+
+                // Pseudo-kill the enemy by disabling its components
+                GetComponent<Collider>().enabled = false;
+                GetComponent<NavMeshAgent>().enabled = false;
+                GetComponent<Renderer>().enabled = false;
+
+                Destroy(gameObject, audioSource.clip.length); // Destroy the enemy after the clip has finished playing
             }
-            Destroy(gameObject);
+            else
+            {
+                Debug.LogWarning("AudioSource or AudioClip is missing.");
+                Destroy(gameObject); // Destroy the enemy immediately if audio is missing
+            }
         }
     }
 

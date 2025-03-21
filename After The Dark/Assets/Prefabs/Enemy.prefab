@@ -181,7 +181,7 @@ MonoBehaviour:
   roamingRange: 20
   speed: 3.5
   waitTime: 2
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 8047821726923744759}
   isFrozen: 0
 --- !u!65 &-6217009909006447394
 BoxCollider:
