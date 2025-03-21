@@ -14,7 +14,9 @@ public class HoldInteractable : MonoBehaviour
     private ChangeMaterialWithMeshRenderer changeMaterial;
     public LightController lightControllercs;
     public GameObject lightController;
-   
+    public AudioSource audioSource;
+
+
 
     void Start()
     {
@@ -87,6 +89,7 @@ public class HoldInteractable : MonoBehaviour
 
     void Interact()
     {
+        audioSource.Play();
         changeMaterial.cleaned();
         // logika tracker
         if (progressBar != null)

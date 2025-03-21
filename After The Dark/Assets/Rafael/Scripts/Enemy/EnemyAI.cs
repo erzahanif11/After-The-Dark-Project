@@ -117,11 +117,7 @@ public class EnemyAI : MonoBehaviour
 
                 Destroy(gameObject, audioSource.clip.length); // Destroy the enemy after the clip has finished playing
             }
-            else
-            {
-                Debug.LogWarning("AudioSource or AudioClip is missing.");
-                Destroy(gameObject); // Destroy the enemy immediately if audio is missing
-            }
+            
         }
     }
 
