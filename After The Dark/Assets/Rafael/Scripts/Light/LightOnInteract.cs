@@ -4,42 +4,34 @@ using UnityEngine.UI;
 public class LightOnInteract : MonoBehaviour
 {
     public LightController lightController;
-    public float holdDuration = 5f;  // Time required to complete interaction
-    private float holdProgress = 0f;  // Tracks progress when holding the button
+    public float holdDuration = 5f;  
+    private float holdProgress = 0f;  
 
-    public Slider progressBar; // UI slider reference
-    private bool isPlayerInRange = false; // To check if player is inside the trigger
+    public Slider progressBar; 
+    private bool isPlayerInRange = false; 
     public Text InteractPrompt;
     public MainLOGIC Mainlogic;
     public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
 
     void Start()
     {
-        //lightController = FindFirstObjectByType<LightController>();
-        //if (lightController == null)
-        //{
-        //    Debug.LogError("LightController script not found in the scene!");
-        //}
-
         if (progressBar != null)
         {
-            progressBar.gameObject.SetActive(false); // Hide progress bar initially
-            progressBar.maxValue = holdDuration; // Set max value
-            progressBar.value = holdProgress; // Set starting value
+            progressBar.gameObject.SetActive(false); 
+            progressBar.maxValue = holdDuration; 
+            progressBar.value = holdProgress; 
         }
     }
 
     void Update()
     {
-        if (isPlayerInRange && !Mainlogic.islightsOn) // Only run logic if the player is inside the trigger
+        if (isPlayerInRange && !Mainlogic.islightsOn) 
         {
-            if (Input.GetKey(KeyCode.P)) // Holding the key
+            if (Input.GetKey(KeyCode.P))
             {
-                holdProgress += Time.deltaTime; // Increment progress
+                holdProgress += Time.deltaTime; 
                 if (progressBar != null)
-                    progressBar.value = holdProgress; // Update UI bar
-
-                //  Debug.Log("Holding progress: " + holdProgress.ToString("F2") + "s");
+                    progressBar.value = holdProgress; 
 
                 if (holdProgress >= holdDuration)
                 {
@@ -48,7 +40,6 @@ public class LightOnInteract : MonoBehaviour
             }
         }
 
-        // Ensure the progress bar always faces the player
         if (progressBar != null)
         {
             Camera mainCam = Camera.main;
@@ -63,7 +54,7 @@ public class LightOnInteract : MonoBehaviour
         {
             isPlayerInRange = true;
             if (progressBar != null)
-                progressBar.gameObject.SetActive(true); // Show progress bar when in range
+                progressBar.gameObject.SetActive(true); 
 
         }
     }
@@ -74,7 +65,7 @@ public class LightOnInteract : MonoBehaviour
         {
             isPlayerInRange = false;
             if (progressBar != null)
-                progressBar.gameObject.SetActive(false); // Hide bar when leaving
+                progressBar.gameObject.SetActive(false); 
         }
     }
 
@@ -89,7 +80,7 @@ public class LightOnInteract : MonoBehaviour
 
         holdProgress = 0f;
         if (progressBar != null)
-            progressBar.value = holdProgress; // Reset UI bar
+            progressBar.value = holdProgress;
         ChangeMaterialWithMeshRenderer.cleaned();
 
     }

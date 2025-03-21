@@ -20,10 +20,8 @@ public class EnemyAI : MonoBehaviour
     private bool hasTriggered = false;
     public AudioSource audioSource;
 
-    // ========== Added Variables for Freezing ==========
-    public bool isFrozen = false; // Status whether the enemy is frozen
-    private float originalSpeed; // Stores the original speed before freezing
-    // ===================================================
+    public bool isFrozen = false; 
+    private float originalSpeed; 
 
     void Start()
     {
@@ -36,13 +34,12 @@ public class EnemyAI : MonoBehaviour
         }
         StartCoroutine(Roam());
 
-        // Save original speed
         originalSpeed = speed;
     }
 
     void Update()
     {
-        if (isFrozen) return; // Stop all movement when frozen
+        if (isFrozen) return;
 
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -107,15 +104,14 @@ public class EnemyAI : MonoBehaviour
             TimeManager.Instance.AddTime();
             if (audioSource != null && audioSource.clip != null)
             {
-                audioSource.transform.parent = null; // Detach the AudioSource from the enemy
-                audioSource.Play(); // Play the attached audio clip
+                audioSource.transform.parent = null; 
+                audioSource.Play(); 
 
-                // Pseudo-kill the enemy by disabling its components
                 GetComponent<Collider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
                 GetComponent<Renderer>().enabled = false;
 
-                Destroy(gameObject, audioSource.clip.length); // Destroy the enemy after the clip has finished playing
+                Destroy(gameObject, audioSource.clip.length); 
             }
             
         }
