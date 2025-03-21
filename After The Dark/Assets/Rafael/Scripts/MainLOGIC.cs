@@ -23,7 +23,7 @@ public class MainLOGIC : MonoBehaviour
     public void CompleteObjective()
     {
         completedObjectives++;
-        objectivesText.text = $"Objectives Completed: {completedObjectives}/{TargetObjectives}";
+        objectivesText.text = $"Tasks Completed: {completedObjectives}/{TargetObjectives}";
 
         if (completedObjectives == TargetObjectives)
         {

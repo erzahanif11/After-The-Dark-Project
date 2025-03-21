@@ -18,8 +18,8 @@ public class EnemySpawn : MonoBehaviour
         enemyCount = 0;
         while (enemyCount < 20)
         {
-            xPos = Random.Range(-21, 104);
-            zPos = Random.Range(51, 118);
+            xPos = Random.Range(-20, 103);
+            zPos = Random.Range(52, 117);
 
             Instantiate(Enemy, new Vector3(xPos, 1.5f, zPos), Quaternion.identity);
 
