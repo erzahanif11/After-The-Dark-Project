@@ -5,14 +5,14 @@ public class PlayerAnimation : MonoBehaviour
     public Texture[] walkFrames;
     public float frameRate = 0.1f;
     public float audioRate = 0.1f;
-    public AudioClip[] audioClips; // Array of audio clips for animation
+    public AudioClip[] audioClips; 
     private Renderer rend;
     private int currentFrame;
     private float timer;
     private float timer2;
     private Transform playerTransform;
     private Material playerMaterial;
-    private AudioSource audioSource; // AudioSource component
+    private AudioSource audioSource; 
     private int toggle = 0;
 
     void Start()
@@ -29,7 +29,7 @@ public class PlayerAnimation : MonoBehaviour
         playerMaterial.EnableKeyword("_ALPHATEST_ON");
         playerMaterial.renderQueue = 2450;
 
-        // Add an AudioSource component to the GameObject
+      
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -65,7 +65,7 @@ public class PlayerAnimation : MonoBehaviour
             {
                 timer2 = 0f;
                 currentFrame = (currentFrame + 1) % walkFrames.Length;
-                audioSource.PlayOneShot(audioClips[toggle]); // Play the audio clip
+                audioSource.PlayOneShot(audioClips[toggle]); 
                 UpdateTexture(walkFrames[currentFrame]);
                 toggle = 1 - toggle;
             }

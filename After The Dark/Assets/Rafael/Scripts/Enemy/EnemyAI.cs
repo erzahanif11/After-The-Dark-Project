@@ -125,24 +125,24 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(startPoint, roamingRange);
     }
 
-    // ========== Updated Freeze Methods ==========
+    
 
     public void Freeze()
     {
         if (!isFrozen)
         {
             isFrozen = true;
-            agent.isStopped = true; // Stop the NavMeshAgent
+            agent.isStopped = true; // Stop 
             agent.velocity = Vector3.zero;
         }
     }
 
-    public void Unfreeze() // Instant unfreeze method (not a coroutine)
+    public void Unfreeze() 
     {
         isFrozen = false;
         agent.isStopped = false; // Resume movement
         agent.speed = originalSpeed;
     }
 
-    // ===============================================
+    
 }

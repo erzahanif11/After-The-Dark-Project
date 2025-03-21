@@ -19,11 +19,13 @@ public class MainLOGIC : MonoBehaviour
     public LightController lightController;
     public GameObject flashlight;
     public bool islightsOn = true;
-    
+   
+
     public void CompleteObjective()
     {
         completedObjectives++;
         objectivesText.text = $"Tasks Completed: {completedObjectives}/{TargetObjectives}";
+        
 
         if (completedObjectives == TargetObjectives)
         {
@@ -42,7 +44,7 @@ public class MainLOGIC : MonoBehaviour
             flashlight.SetActive(true);
         islightsOn=false;
         Debug.Log("flash nyala");
-        
+       
 
         LightController.GetComponent<LightController>().ForceTurnOffLights();
     }

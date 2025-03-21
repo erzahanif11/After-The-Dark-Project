@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class AutoCollider : MonoBehaviour
 {
-    [ContextMenu("Add Colliders")] // This adds a right-click option in Inspector
+    [ContextMenu("Add Colliders")] 
     void ApplyColliders()
     {
         foreach (Transform child in transform)

@@ -12,6 +12,7 @@ public class LightController : MonoBehaviour
     public bool isOff = true;
     public MainLOGIC mainlogic;
     public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
+    public thedarktheme thedarkthemescript;   
     private void Start()
     {
         roomLights = GameObject.FindGameObjectsWithTag("RoomLight")
@@ -40,7 +41,16 @@ public class LightController : MonoBehaviour
 
     private void ToggleLights(bool state)
     {
-        mainlogic.islightsOn = false;
+        mainlogic.islightsOn = state;
+
+        if (state) { 
+            if(thedarkthemescript.thedarkthemeaudio.isPlaying)
+                thedarkthemescript.thedarkthemeaudio.Stop();
+        }
+        else
+        {
+            thedarkthemescript.queTheMusic();
+        }
         foreach (Light light in roomLights)
         {
             if (light != null)
