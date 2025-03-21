@@ -38,7 +38,7 @@ public class HoldInteractable : MonoBehaviour
     {
         if (isPlayerInRange && !isComplete && tracker.islightsOn ) // Only run logic if the player is inside the trigger
         {
-            if (Input.GetKey(KeyCode.P)) // Holding the key
+            if (Input.GetKey(KeyCode.E)) // Holding the key
             {
                 holdProgress += Time.deltaTime; // Increment progress
                 if (progressBar != null)
