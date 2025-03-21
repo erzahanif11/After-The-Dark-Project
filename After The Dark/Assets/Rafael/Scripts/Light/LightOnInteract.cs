@@ -12,6 +12,7 @@ public class LightOnInteract : MonoBehaviour
     public Text InteractPrompt;
     public MainLOGIC Mainlogic;
     public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -71,6 +72,7 @@ public class LightOnInteract : MonoBehaviour
 
     void Interact()
     {
+        audioSource.Play();
         Debug.Log("Interaction Complete!");
         Mainlogic.islightsOn = true;
         if (lightController != null)
