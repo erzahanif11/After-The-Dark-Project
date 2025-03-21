@@ -2,25 +2,30 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    public Texture[] walkFrames;
+    public Texture[] walkFramesHorizontal;
+    public Texture[] walkFramesVertical;
     public float frameRate = 0.1f;
     public float audioRate = 0.1f;
-    public AudioClip[] audioClips; 
+    public AudioClip[] audioClips;
+    public float audioVolume = 1.0f; 
     private Renderer rend;
-    private int currentFrame;
+    private int currentFrameH;
+    private int currentFrameV;
     private float timer;
     private float timer2;
     private Transform playerTransform;
     private Material playerMaterial;
-    private AudioSource audioSource; 
+    private AudioSource audioSource;
     private int toggle = 0;
+    private bool lastframeisH;
+    public float ketebalan=1.6f;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         playerTransform = transform;
         playerMaterial = rend.material;
-        currentFrame = 0;
+        currentFrameH = 0;
 
         playerMaterial.SetFloat("_Cutoff", 0.5f);
         playerMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
@@ -29,8 +34,8 @@ public class PlayerAnimation : MonoBehaviour
         playerMaterial.EnableKeyword("_ALPHATEST_ON");
         playerMaterial.renderQueue = 2450;
 
-      
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.volume = audioVolume; 
     }
 
     void Update()
@@ -39,7 +44,6 @@ public class PlayerAnimation : MonoBehaviour
                         Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
                         Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ||
                         Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
-
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -57,22 +61,36 @@ public class PlayerAnimation : MonoBehaviour
             if (timer >= frameRate)
             {
                 timer = 0f;
-                currentFrame = (currentFrame + 1) % walkFrames.Length;
-                UpdateTexture(walkFrames[currentFrame]);
-                
+
+                if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
+                {
+                    playerTransform.localScale = new Vector3(ketebalan, 1.64f, 1.64e-06f);
+                    lastframeisH = false;
+                    currentFrameH = 0;
+                    currentFrameV = (currentFrameV + 1) % walkFramesVertical.Length;
+                    UpdateTexture(walkFramesVertical[currentFrameV]);
+                }
+                else
+                {
+                    lastframeisH = true;
+                    currentFrameV = 0;
+                    currentFrameH = (currentFrameH + 1) % walkFramesHorizontal.Length;
+                    UpdateTexture(walkFramesHorizontal[currentFrameH]);
+                }
             }
             if (timer2 >= audioRate)
             {
                 timer2 = 0f;
-                currentFrame = (currentFrame + 1) % walkFrames.Length;
-                audioSource.PlayOneShot(audioClips[toggle]); 
-                UpdateTexture(walkFrames[currentFrame]);
+                audioSource.PlayOneShot(audioClips[toggle]);
                 toggle = 1 - toggle;
             }
         }
         else
         {
-            UpdateTexture(walkFrames[0]);
+            if (lastframeisH)
+                UpdateTexture(walkFramesHorizontal[0]);
+            else
+                UpdateTexture(walkFramesVertical[0]);
         }
     }
 
