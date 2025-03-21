@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ChangeMaterialWithMeshRenderer : MonoBehaviour
 {
-    public Material newMaterial; // Assign a new material in the Inspector
+    public Material newMaterial; 
+    public Material trashedMaterial; 
     private MeshRenderer meshRenderer;
 
     void Start()
@@ -10,11 +11,19 @@ public class ChangeMaterialWithMeshRenderer : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    public void cleaned() 
+    public void cleaned()
     {
         if (meshRenderer != null && newMaterial != null)
         {
             meshRenderer.material = newMaterial;
+        }
+    }
+
+    public void trashed()
+    {
+        if (meshRenderer != null && trashedMaterial != null)
+        {
+            meshRenderer.material = trashedMaterial;
         }
     }
 }

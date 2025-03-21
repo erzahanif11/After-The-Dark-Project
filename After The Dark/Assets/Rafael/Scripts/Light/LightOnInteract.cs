@@ -84,6 +84,7 @@ public class LightOnInteract : MonoBehaviour
         if (progressBar != null)
             progressBar.value = holdProgress;
         ChangeMaterialWithMeshRenderer.cleaned();
+        progressBar.gameObject.SetActive(false);
 
     }
 }

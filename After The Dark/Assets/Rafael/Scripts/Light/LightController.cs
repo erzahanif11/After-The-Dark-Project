@@ -11,6 +11,7 @@ public class LightController : MonoBehaviour
     public GameObject enemySpawner;
     public bool isOff = true;
     public MainLOGIC mainlogic;
+    public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
     private void Start()
     {
         roomLights = GameObject.FindGameObjectsWithTag("RoomLight")
@@ -32,6 +33,8 @@ public class LightController : MonoBehaviour
             StartCoroutine(spawner.EnemyDrop());
             timer = lightOnDuration;
             mainlogic.islightsOn = false;
+            ChangeMaterialWithMeshRenderer.trashed();
+
         }
     }
 
@@ -70,7 +73,7 @@ public class LightController : MonoBehaviour
         timer = lightOnDuration;
         StartCoroutine(DestroyAllEnemies());
         mainlogic.islightsOn = true;
-
+        ChangeMaterialWithMeshRenderer.cleaned();
     }
 
     public void ForceTurnOffLights()
