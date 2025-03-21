@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     private bool isChasing = false;
     private bool isRoaming = false;
     private bool hasTriggered = false;
+    public AudioSource audioSource;
 
     // ========== Added Variables for Freezing ==========
     public bool isFrozen = false; // Status whether the enemy is frozen
@@ -103,6 +105,10 @@ public class EnemyAI : MonoBehaviour
         {
             hasTriggered = true;
             TimeManager.Instance.AddTime();
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(audioSource.clip); // Play the attached audio clip
+            }
             Destroy(gameObject);
         }
     }
