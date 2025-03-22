@@ -5,27 +5,36 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public float lightOnDuration = 120f;
+    public float lightOnDuration;
     private float timer;
     private Light[] roomLights;
     public GameObject enemySpawner;
     public bool isOff = true;
     public MainLOGIC mainlogic;
     public ChangeMaterialWithMeshRenderer ChangeMaterialWithMeshRenderer;
-    public thedarktheme thedarkthemescript;   
+    public thedarktheme thedarkthemescript;
+    public TimeManager time;
+    private bool reduced = false;
     private void Start()
     {
+        time = FindAnyObjectByType<TimeManager>();
         roomLights = GameObject.FindGameObjectsWithTag("RoomLight")
                         .Select(obj => obj.GetComponent<Light>())
                         .ToArray();
         timer = 0;
         ToggleLights(true);
+        
     }
 
     private void Update()
     {
         timer -= Time.deltaTime;
-
+        if (time.currentTime >= 22 && !reduced)
+        {
+            lightOnDuration -= 30;
+            reduced = true;
+            Debug.Log("Durasi nyala lampu lebih sedikit");
+        }
         if (timer <= 0)
         {
             ToggleLights(false);

@@ -72,7 +72,7 @@ Material:
     - _SunSizeConvergence: 6.04
     m_Colors:
     - _GroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-    - _SkyTint: {r: 0.05280876, g: 0.08707274, b: 0.25390044, a: 1}
+    - _SkyTint: {r: 0.003215605, g: 0.004423662, b: 0.033417076, a: 1}
     - _Tint: {r: 0.075019345, g: 0.10822577, b: 0.28705832, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
