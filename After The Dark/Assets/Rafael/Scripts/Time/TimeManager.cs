@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
-    public float currentTime = 18f; 
+    private float currentTime = 18f; 
     private float endTime = 24f; 
 
     [Header("UI Settings")]
