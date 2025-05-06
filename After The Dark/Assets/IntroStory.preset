@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IntroStory
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 85ec3a527a47379499e204a872190bc3, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Intro
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: storyText
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: lines.Array.size
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[0]'
+    value: Namaku Asep Santoso. Tapi orang-orang di kantor memanggilku Anto...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[1]'
+    value: Aku cuma seorang office boy biasa.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[2]'
+    value: 'Tugasku simpel: bersihkan kantor setelah semua orang pulang.'
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[3]'
+    value: Tapi... aku punya satu kelemahan.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[4]'
+    value: Aku takut gelap.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[5]'
+    value: Bukan takut biasa...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[6]'
+    value: tapi panik, keringat dingin, ingin kabur...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[7]'
+    value: Malam ini aku harus lembur sendiri...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[8]'
+    value: Staff sudah pulang. Kantor sunyi.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[9]'
+    value: Dan... aku harus menyelesaikan semua task sebelum waktu habis.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[10]'
+    value: Kalau lampunya padam...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[11]'
+    value: aku harus cepat cari saklar utama...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[12]'
+    value: Karena dalam gelap...
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: 'lines.Array.data[13]'
+    value: Ada sesuatu yang mengawasiku.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: textSpeed
+    value: 0.0005
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
+  m_CoupledType:
+    m_NativeTypeID: 0
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_CoupledProperties: []
