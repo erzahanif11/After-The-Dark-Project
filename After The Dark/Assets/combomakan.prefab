@@ -123,6 +123,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1351131029790156418}
     m_Modifications:
+    - target: {fileID: 1962267895244521130, guid: e63c963c41369e14cb90f8267f1b05b2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4239741789702927496, guid: e63c963c41369e14cb90f8267f1b05b2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -130,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 4750829127880022159, guid: e63c963c41369e14cb90f8267f1b05b2, type: 3}
       propertyPath: m_Name
       value: kursikerja 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477581844110284874, guid: e63c963c41369e14cb90f8267f1b05b2, type: 3}
+      propertyPath: m_Size.z
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 8421166890143329527, guid: e63c963c41369e14cb90f8267f1b05b2, type: 3}
       propertyPath: m_LocalScale.x
