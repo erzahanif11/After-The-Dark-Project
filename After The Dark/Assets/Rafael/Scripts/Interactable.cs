@@ -15,7 +15,7 @@ public class HoldInteractable : MonoBehaviour
     public LightController lightControllercs;
     public GameObject lightController;
     public AudioSource audioSource;
-
+    public GameObject cross;
 
 
     void Start()
@@ -60,6 +60,11 @@ public class HoldInteractable : MonoBehaviour
             Camera mainCam = Camera.main;
             if (mainCam != null)
                 progressBar.transform.LookAt(mainCam.transform);
+        }
+
+        if (isComplete)
+        {
+            cross.SetActive(true);
         }
     }
 
