@@ -19,6 +19,7 @@ public class MainLOGIC : MonoBehaviour
     public LightController lightController;
     public GameObject flashlight;
     public bool islightsOn = true;
+    public GameObject UI;
    
 
     public void CompleteObjective()
@@ -43,6 +44,7 @@ public class MainLOGIC : MonoBehaviour
         EnemySpawner.SetActive(true);
             flashlight.SetActive(true);
         islightsOn=false;
+        UI.SetActive(false);
         Debug.Log("flash nyala");
        
 

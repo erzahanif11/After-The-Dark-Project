@@ -19,6 +19,7 @@ public class IntroStory : MonoBehaviour
     {
         storyText.text = "";
         typingCoroutine = StartCoroutine(TypeLine(lines[currentLineIndex]));
+        Intro.SetActive(true);
     }
 
     private void Update()
