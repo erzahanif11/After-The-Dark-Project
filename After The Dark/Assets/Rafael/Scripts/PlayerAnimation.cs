@@ -19,13 +19,14 @@ public class PlayerAnimation : MonoBehaviour
     private int toggle = 0;
     private bool lastframeisH;
     public float ketebalan=1.6f;
-
+    private Rigidbody rb;
     void Start()
     {
         rend = GetComponent<Renderer>();
         playerTransform = transform;
         playerMaterial = rend.material;
         currentFrameH = 0;
+        rb= GetComponent<Rigidbody>();
 
         playerMaterial.SetFloat("_Cutoff", 0.5f);
         playerMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
@@ -40,10 +41,10 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        bool isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+        bool isMoving = rb.linearVelocity.magnitude!=0 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
                         Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
                         Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ||
-                        Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
+                        Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow));
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
